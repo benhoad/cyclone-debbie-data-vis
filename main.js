@@ -9,22 +9,24 @@ let scale = 40;
 (function() {
   //in the html the id of the canvas element is also set as "canvas"
   let canvas = document.getElementById("canvas");
-  // canvases have "contexts"; we'll be getting the 2d plane to work on.
-  let context = canvas.getContext("2d");
 
   // resize the canvas to fill browser window dynamically - listen for resizing of the window, when people click on the edges to physically resize it.
-  window.addEventListener("resize", resizeCanvas, false);
+  window.addEventListener("resize", resizeCanvas);
 
   function resizeCanvas() {
     //double the resolution of the canvas object so it looks nicer on retina screens
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
+    
     //call the function below called "readTextFile" and give it the argument "./data.csv" - which './' means look in the same directory of this js file.
     readTextFile("./data.csv");
   }
+  
   //call the function for the first time - all subsequent times will be when the window is resized.
   resizeCanvas();
 })();
+
+
 
 /*
  *
@@ -62,6 +64,7 @@ function readTextFile(file) {
   //trigger the request - the stuff above doesn't execute until this "rawFile" variable returns some activity.
   rawFile.send(null);
 }
+
 
 function processData(csv) {
   //"allTextLines" becomes an array where each item in the array is a row, the string uses special chars ("\r\n" or "\n") to denote a new line or carriage return (named after returning the carriage of a typewriter back to the start - *type type type DING! sliiiiiiide*)
