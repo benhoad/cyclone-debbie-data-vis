@@ -92,7 +92,7 @@ function displayData() {
       //move line to origin, so it rotates about itself - necesary for canvas drawing
       ctx.translate(pos + 0.5, height);
       //rotate based on the wind direction which is the 3rd field remember array's position [2] - rotate function is in radians and the line starts pointing down so i add 180 degrees to correct it at the top.
-      ctx.rotate(((parseFloat(datum[2]) + 180) * Math.PI) / 180);
+      ctx.rotate(((parseFloat(datum[2])) * Math.PI) / 180);
       //move line back to start after being rotated
       ctx.translate(-pos + 0.5, -height);
 
